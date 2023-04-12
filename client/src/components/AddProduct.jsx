@@ -33,7 +33,7 @@ function AddProduct({socket}) {
       newProduct.creator = localStorage.getItem('username')
       newProduct.userid = localStorage.getItem('user-id')
       if (localStorage.getItem('auth-token')) {
-          await axios.post('http://localhost:8080/api/v1/addproduct',newProduct)
+          await axios.post('https://auction-hub.onrender.com/api/v1/addproduct',newProduct)
         .then((response)=>{
           navigate('/my-products')
         })
