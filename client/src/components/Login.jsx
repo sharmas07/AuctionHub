@@ -16,7 +16,7 @@ function Login(props) {
     setloggedin(true)
     setisloading(true)
     e.preventDefault()
-    await axios.post(`http://localhost:8080/api/v1/login`,{
+    await axios.post(`https://auction-hub.onrender.com/api/v1/login`,{
       email, password
     })
     .then(async function (response) {
