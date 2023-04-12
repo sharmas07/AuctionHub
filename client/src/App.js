@@ -14,7 +14,7 @@ import LandingPage from "./components/LandingPage";
 import UserProducts from "./components/UserProducts";
 import axios from "axios";
 import { io } from "socket.io-client";
-const socket = io("http://localhost:8080");
+const socket = io("https://auction-hub.onrender.com");
 function App() {
   const [Username, setUsername] = useState("");
   const [UserLoggedin, setUserLoggedin] = useState(false);
@@ -26,7 +26,7 @@ function App() {
   const getUser = async () => {
     if (localStorage.getItem("auth-token")) {
       await axios
-        .get("http://localhost:8080/api/v1/getuser", {
+        .get("https://auction-hub.onrender.com/api/v1/getuser", {
           headers: {
             "auth-token": localStorage.getItem("auth-token"),
           },
