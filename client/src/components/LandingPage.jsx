@@ -1,6 +1,7 @@
 import React from 'react'
 import './CSS/LandingPage.css'
 import { Link } from 'react-router-dom'
+import Footer from './Footer'
 
 const LandingPage = () => {
   return (
@@ -16,6 +17,7 @@ const LandingPage = () => {
                 </div>
             </div>
         </div> 
+        <Footer />
     </div>
   )
 }

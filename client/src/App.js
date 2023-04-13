@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage";
 import UserProducts from "./components/UserProducts";
 import axios from "axios";
 import { io } from "socket.io-client";
+import Footer from "./components/Footer";
 const socket = io("https://auction-hub.onrender.com");
 function App() {
   const [Username, setUsername] = useState("");
@@ -145,6 +146,11 @@ function App() {
                   </li>
                   <li>
                     <Link
+                    style={
+                  {
+                    color:'red'
+                  }
+                    }
                       onClick={() => {
                         localStorage.removeItem("auth-token");
                         setUserLoggedin(false)

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
+import Footer from "./Footer";
 
 function Register(props) {
   const {setUserLoggedin, getUser} = props
@@ -108,6 +109,7 @@ function Register(props) {
           <input className="register-btn" type="submit" onClick={onRegister} />
         </form>
       </div>
+      <Footer />
     </>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CSS/Register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 function AddProduct({socket}) {
   const navigate = useNavigate()
@@ -49,6 +50,7 @@ function AddProduct({socket}) {
   // socket 
 
   return (
+    <>
     <div className="container">
       <form className="form" encType="multipart/form-data">
         <span className="title">Add Your Product</span>
@@ -86,6 +88,8 @@ function AddProduct({socket}) {
         </button>
       </form>
     </div>
+      <Footer />
+    </>
   );
 }
 

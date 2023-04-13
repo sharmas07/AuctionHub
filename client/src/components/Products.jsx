@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './CSS/products.css'
 import Spinner from "./Spinner";
-
 import ProductCard from './ProductCard';
+
 function Products({socket}) {
   const [Products, setProducts] = useState([])
   
@@ -31,12 +31,14 @@ function Products({socket}) {
   },[socket])
   
   return (
+    <>
     <div className="products-container">
       {isloading && <Spinner />}
        {Products && Products.map((product)=>{
       return <ProductCard key={product._id} product={product}/>
       })}
     </div>
+    </>
   )
 }
 

@@ -51,6 +51,7 @@ const UserProducts = (props) => {
       },[socket])
         
     return (
+      <>
       <div className="products-container">
         {isloading && <Spinner />}
          {Products && Products.map((product)=>{
@@ -66,6 +67,7 @@ const UserProducts = (props) => {
           </Link>
         </div>
       </div>
+      </>
     )
 }
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import '../components/CSS/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import Spinner from './Spinner'
+import Footer from './Footer'
 
 function Login(props) {
   const {setUserLoggedin, getUser} = props;
@@ -38,6 +39,7 @@ function Login(props) {
   }
 
   return (
+    <>
     <div className="container">
           <form className="form">
         <p className="form-title">Sign in to your account</p>
@@ -68,6 +70,8 @@ function Login(props) {
       </form>
 
     </div>
+    <Footer/>
+    </>
   )
 } 
 
