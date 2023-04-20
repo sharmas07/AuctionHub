@@ -55,8 +55,8 @@
         font-size: 1rem;
     }
     .landing-page{
-        height: 100vh;
+        height: 80vh;
         justify-content: flex-start;
-        margin-top: 4rem;
+        margin-top: 2rem;
     }
 }
