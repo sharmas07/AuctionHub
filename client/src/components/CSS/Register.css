@@ -45,3 +45,8 @@
   background-color: black;
   color: #ffffff;
  }
+ @media (max-width: 768px) {
+  .container{
+    height: 75vh;
+  }
+}

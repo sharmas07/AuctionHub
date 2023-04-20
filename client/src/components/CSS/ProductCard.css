@@ -18,6 +18,7 @@
 }
 .product-img{
     max-width: 250px;
+    height: -webkit-fill-available;
     border-radius: 1rem;
 }
 .product-details{
@@ -26,8 +27,8 @@
     justify-content: space-around;
 }
 .product-detail{
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 700;
     padding: 0.6rem;
     margin: 8px 8px 8px 6px;
 }
@@ -67,6 +68,19 @@
 @media (max-width: 768px) {
     .product-card{
         width: auto;
+        align-items: center;
+        justify-content: center;
+    }
+    .product-image-container{
+        width: 100%;
+        height: 160px;
+        display: flex;
+        justify-content: center;
+    }
+    .product-img{
+        width: 100%;
+    }
+    .product-card-left{
         align-items: center;
         justify-content: center;
     }

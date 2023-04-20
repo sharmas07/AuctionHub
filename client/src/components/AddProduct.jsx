@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./CSS/Register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Spinner from './Spinner'
 import Footer from "./Footer";
 
 function AddProduct({socket}) {
   const navigate = useNavigate()
+  const [isLoading, setisLoading] = useState(false)
   const [negetiveBidPrice, setnegetiveBidPrice] = useState(false);
   const [isEmptyInput, setisEmptyInput] = useState(false);
   const [newProduct, setnewProduct] = useState({
@@ -14,6 +16,7 @@ function AddProduct({socket}) {
     current_price:'',
     last_bidder:'none'
   });
+  const [image, setImage] = useState(null)
   const handleBidPrice = (e) => {
     if (e.target.value < 0) {
       setnegetiveBidPrice(true);
@@ -25,6 +28,7 @@ function AddProduct({socket}) {
   // post a new product to the db using username and userid
   const handleAddProduct = async (e) => {
     e.preventDefault();
+    setisLoading(true)
     if(newProduct.product_name === ''){
       setisEmptyInput(true)
     }
@@ -33,9 +37,24 @@ function AddProduct({socket}) {
       // checks if auth token is present and add the product 
       newProduct.creator = localStorage.getItem('username')
       newProduct.userid = localStorage.getItem('user-id')
+      const formData = new FormData()
+      formData.append('product_name', newProduct.product_name)
+      formData.append('initial_price', newProduct.initial_price)
+      formData.append('current_price', newProduct.current_price)
+      formData.append('last_bidder', newProduct.last_bidder)
+      formData.append('creator', newProduct.creator)
+      formData.append('userid', newProduct.userid)
+      formData.append('image', image)
       if (localStorage.getItem('auth-token')) {
-          await axios.post('https://auction-hub.onrender.com/api/v1/addproduct',newProduct)
+          await axios.post('https://auction-hub.onrender.com/api/v1/addproduct', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+           }
+          )
         .then((response)=>{
+          console.log(response)
+          setisLoading(false)
           navigate('/my-products')
         })
         .catch((error)=>{
@@ -43,6 +62,7 @@ function AddProduct({socket}) {
         })
       }
       else{
+        setisLoading(false)
         navigate('/login')
       }
     }
@@ -83,6 +103,13 @@ function AddProduct({socket}) {
         ) : (
           ""
         )}
+        <input
+            required
+            onChange={(e) => setImage(e.target.files[0])}
+            type="file"
+            className="input"
+          />
+          {isLoading && <Spinner/>}
         <button className="register-btn" onClick={handleAddProduct}>
           Add Product
         </button>

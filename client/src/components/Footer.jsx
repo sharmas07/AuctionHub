@@ -13,7 +13,7 @@ const Footer = () => {
             textAlign:'center',
             padding:'1rem'
         }}>
-        Made with ❤️ by Sharmas
+        Made with 💙 by Sharmas
         </h3>
     </div>
   )

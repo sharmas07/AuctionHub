@@ -28,6 +28,15 @@ function Products({socket}) {
         setProducts(data)
       })
     })
+    // fetches the data on socket broadcasted fetchData event
+    socket.on('fetchData',(data)=>{
+      axios.get('https://auction-hub.onrender.com/api/v1/fetchAllProducts')
+      .then(response=>{
+        const {data} = response;
+        data.reverse(); // to show the latest products on top of the page
+        setProducts(data)
+      })
+    })
   },[socket])
   
   return (
