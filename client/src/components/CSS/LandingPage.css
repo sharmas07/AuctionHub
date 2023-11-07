@@ -1,62 +1,73 @@
-.landing-page{
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.landing-page {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.landing-page-content{
-    margin: 1rem;
-    padding: 1rem;
-    display: flex;
-    height: 26rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
+.landing-page-content {
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  height: 26rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 }
-.landingpage-text-content{
-    font-size: 4.5rem;
-    width: 50rem;
+.landingpage-text-content {
+  font-size: 4.5rem;
+  width: 50rem;
 }
-.landingpage-btns{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 1.5rem;
-    font-size: 1rem;
+.landingpage-btns {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  justify-content: space-between;
+  column-gap: 2rem;
+  margin: 1.5rem;
+  font-size: 1rem;
 }
-.landingpage-btn-link{
-    text-decoration: none;
+.landingpage-btn-link {
+  text-decoration: none;
 }
-.landingpage-btn{
-    padding: 1rem;
-    margin: 2rem;
-    color: white;
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 1rem;
-    text-align: center;
+.landingpage-btn {
+  padding: 1rem;
+  margin: 2rem;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 1rem;
+  text-align: center;
 }
-.landingpage-btn:hover{
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    transition: .1s;
+.landingpage-btn:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  transition: 0.1s;
 }
 @media (max-width: 768px) {
-    .landingpage-text-content{
-        font-size: 3rem;
-        width: 22rem;
-        margin-bottom: 1rem;
-    }
-    .landingpage-btns{
-        margin: 1px;
-        font-size: 1rem;
-    }
-    .landing-page{
-        height: 80vh;
-        justify-content: flex-start;
-        margin-top: 2rem;
-    }
+  .landingpage-text-content {
+    font-size: 2.5rem;
+    width: 22rem;
+    margin-bottom: 1rem;
+  }
+  .landingpage-btns {
+    margin: 1px;
+    font-size: 1rem;
+  }
+  .landing-page {
+    height: 80vh;
+    justify-content: flex-start;
+    margin-top: 2rem;
+  }
+
+  .landing-page-content {
+    flex-direction: column;
+  }
+  .a {
+    width: 400px;
+  }
 }
+
+
