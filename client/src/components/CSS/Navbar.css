@@ -1,55 +1,77 @@
-.nav-container{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    color: black;
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: black;
 }
-.logo{
-    padding: 0.5rem;
-    width: 14rem;
+.logo {
+  padding: 0.5rem;
+  width: 14rem;
 }
-.nav-right{
-    padding: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.nav-right {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.nav-li{
-    text-decoration: none;
+
+.nav-li {
+  /* text-decoration: none;
     color: black;
     font-size: 1.2rem;
-    margin: 1rem;
+    margin: 1rem; */
+  /* font-family: PlusJakartaSans, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Cantarell, Helvetica Neue, Ubuntu, sans-serif; */
+
+  font-size: 1rem;
+  align-items: center;
+  height: 48px;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  padding: 16px;
+  color: #0b0b0b;
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(143, 142, 142, 0.15) !important;
+  background: #000000;
+  margin: 8px;
 }
-.user-profile{
-    border-radius: 50%;
-    width: 3rem;
-    margin-right: 1rem;
+.n {
+  font-size: 1.8rem;
+  color: #7f7f7f;
 }
-.nav-right-right{
-    display: flex;
-    align-items: center;
-    color: black;
-    margin: 1rem;
+.nav-li:hover {
+  background: #2b2a2a;
 }
-.username-txt{
-    margin-right: 1rem;
-    font-size: 1.2rem;
-    font-weight: 500;
+.user-profile {
+  border-radius: 50%;
+  width: 3rem;
+  margin-right: 1rem;
 }
-.hamburger{
-    display: none;
+.nav-right-right {
+  display: flex;
+  align-items: center;
+  color: black;
+  margin: 1rem;
 }
-.logout-btn{
-    color: red;
-    cursor: pointer;
+.username-txt {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.hamburger {
+  display: none;
+}
+.logout-btn {
+  color: red;
+  cursor: pointer;
 }
 @media (max-width: 768px) {
-    .nav-right{
-        display: none;
-    }
-    .hamburger{
-        display: block;
-    }
+  .nav-right {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
 }

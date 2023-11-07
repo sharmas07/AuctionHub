@@ -22,9 +22,12 @@ function Navbar(props) { // handles logout: clears auth-token from localStorage 
       </div>
       <div className="nav-right">
         <div className="nav-right-left">
-          <ul>
-            <Link className='nav-li' to={'/'}><span>Home</span></Link>
-            <Link className='nav-li' to={'/explore'}><span>Explore</span></Link>
+          <ul >
+            <Link className='nav-li' to={'/'}><span className='n'>Home</span></Link>
+            <Link className="nav-li" to={"/register"}>
+              <span className='n'>Sign Up</span>
+            </Link>
+            <Link className='nav-li' to={'/explore'}><span className='n' >Explore</span></Link>
             {UserLoggedin && <Link className='nav-li' to={'/my-products'}><span>My Products</span></Link>}
           </ul>
         </div>

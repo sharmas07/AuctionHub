@@ -4,6 +4,8 @@ import '../components/CSS/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import Spinner from './Spinner'
 import Footer from './Footer'
+import i from '../images/ac.png'
+
 
 function Login(props) {
   const {setUserLoggedin, getUser} = props;
@@ -39,7 +41,8 @@ function Login(props) {
   }
 
   return (
-    <>
+    <> <div className="auth">
+      <img src={i} className="c" alt="" />
     <div className="container">
           <form className="form">
         <p className="form-title">Sign in to your account</p>
@@ -70,7 +73,7 @@ function Login(props) {
       </form>
 
     </div>
-    <Footer/>
+</div>    <Footer/>
     </>
   )
 } 
