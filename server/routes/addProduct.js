@@ -25,11 +25,11 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 router.post('/',
- upload.single("image") ,
+ upload.single('image') ,
 async (req, res)=>{
     
     try { 
-        const {product_name, initial_price, current_price, last_bidder, userid, creator} = req.body
+        const {added_time,bid_time,product_name, initial_price, current_price, last_bidder, userid, creator} = req.body
         // creates a new product in db
         const newProduct = await Product.create({
             userid,
@@ -38,6 +38,8 @@ async (req, res)=>{
             initial_price,
             current_price,
             last_bidder,
+            bid_time,
+            added_time,
             image_url: req.file.path
         })
         res.status(201).json(newProduct)

@@ -6,6 +6,28 @@ import Spinner from './Spinner'
 import Footer from "./Footer";
 
 function AddProduct({socket}) {
+  const [days, setDays] = useState('');
+  const [hours, setHours] = useState('');
+  const [minutes, setMinutes] = useState('');
+  const [seconds, setSeconds] = useState('');
+  const [timeString, setTimeString] = useState('');
+
+  const handleDaysChange = (event) => {
+    setDays(event.target.value);
+  };
+
+  const handleHoursChange = (event) => {
+    setHours(event.target.value);
+  };
+
+  const handleMinutesChange = (event) => {
+    setMinutes(event.target.value);
+  };
+
+  const handleSecondsChange = (event) => {
+    setSeconds(event.target.value);
+  };
+
   const navigate = useNavigate()
   const [isLoading, setisLoading] = useState(false)
   const [negetiveBidPrice, setnegetiveBidPrice] = useState(false);
@@ -29,15 +51,77 @@ function AddProduct({socket}) {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     setisLoading(true)
+    // Bid time validation
+    // Validate time values
+    if (days === '' || hours === '' || minutes === '' || seconds === '') {
+      console.log('Please fill in all fields.');
+      return;
+    }
+
+    // Check if time values are valid
+    const isValidTime =
+      /^[0-9]+$/.test(days) &&
+      /^[0-9]+$/.test(hours) &&
+      /^[0-9]+$/.test(minutes) &&
+      /^[0-9]+$/.test(seconds);
+
+    if (!isValidTime) {
+      console.log('Invalid time format. Please enter numeric values.');
+      return;
+    }
+
+    // Convert time values to numbers
+    const daysNum = parseInt(days, 10);
+    const hoursNum = parseInt(hours, 10);
+    const minutesNum = parseInt(minutes, 10);
+    const secondsNum = parseInt(seconds, 10);
+
+    // Validate time range
+    if (
+      daysNum < 0 ||
+      daysNum > 30 ||
+      hoursNum < 0 ||
+      hoursNum > 23 ||
+      minutesNum < 0 ||
+      minutesNum > 59 ||
+      secondsNum < 0 ||
+      secondsNum > 59
+    ) {
+      console.log('Invalid time range. Please enter valid values.');
+      return;
+    }
+
+    // Concatenate time components into desired format
+    const bid_time = `${days}:${hours}:${minutes}:${seconds}`;
+    setTimeString(bid_time);
+
+    // Process the timeString value as needed
+    console.log(bid_time);
+
     if(newProduct.product_name === ''){
       setisEmptyInput(true)
     }
     else{
+      //Get current date/time as added_time
+      const current_added_time = new Date();
+      const formatter = new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+      const added_time = formatter.format(current_added_time);
+      console.log(added_time)
       setisEmptyInput(false)
       // checks if auth token is present and add the product 
       newProduct.creator = localStorage.getItem('username')
       newProduct.userid = localStorage.getItem('user-id')
       const formData = new FormData()
+      formData.append('bid_time', bid_time)
+      formData.append('added_time', added_time)
       formData.append('product_name', newProduct.product_name)
       formData.append('initial_price', newProduct.initial_price)
       formData.append('current_price', newProduct.current_price)
@@ -46,7 +130,7 @@ function AddProduct({socket}) {
       formData.append('userid', newProduct.userid)
       formData.append('image', image)
       if (localStorage.getItem('auth-token')) {
-          await axios.post('https://auction-hub.onrender.com/api/v1/addproduct', formData, {
+          await axios.post('http://localhost:8080/api/v1/addproduct', formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
@@ -109,7 +193,27 @@ function AddProduct({socket}) {
             type="file"
             className="input"
           />
-          {isLoading && <Spinner/>}
+          {isLoading && <Spinner/>} 
+         {/* TODO: ADD TIME TO SOLD OUT */}
+         <label>
+        Days:
+        <input type="text" value={days} onChange={handleDaysChange} maxLength={'2'} />
+      </label>
+
+      <label>
+        Hours:
+        <input type="text" value={hours} onChange={handleHoursChange} maxLength={'2'} />
+      </label>
+
+      <label>
+        Minutes:
+        <input type="text" value={minutes} onChange={handleMinutesChange} maxLength={'2'} />
+      </label>
+
+      <label>
+        Seconds:
+        <input type="text" value={seconds} onChange={handleSecondsChange} maxLength={'2'} />
+      </label>
         <button className="register-btn" onClick={handleAddProduct}>
           Add Product
         </button>

@@ -67,6 +67,15 @@
   color: red;
   cursor: pointer;
 }
+.logout-btn{
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    color: red;
+    cursor: pointer;
+}
 @media (max-width: 768px) {
   .nav-right {
     display: none;
