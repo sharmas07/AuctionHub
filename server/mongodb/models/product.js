@@ -7,7 +7,9 @@ const productSchema = new mongoose.Schema({
     initial_price: {type:String, required:true},
     current_price: {type:String, required:true},
     last_bidder: {type:String, required:true},
-    image_url: {type: String}
+    image_url: {type: String},
+    added_time:{type:String},
+    bid_time:{type:String}
 });
 
 const Product = mongoose.model('Product', productSchema);

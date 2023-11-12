@@ -12,7 +12,7 @@ function Products({socket}) {
   useEffect(() => {
     setisloading(true);
     // fetches all the products of all users
-    axios.get('https://auction-hub.onrender.com/api/v1/fetchAllProducts')
+    axios.get('http://localhost:8080/api/v1/fetchAllProducts')
     .then(response=>{
       const {data} = response;
       data.reverse();
@@ -21,7 +21,7 @@ function Products({socket}) {
     })
     // refresh on fetching data from server's socket event
     socket.on('newProductAdded',(data)=>{
-      axios.get('https://auction-hub.onrender.com/api/v1/fetchAllProducts')
+      axios.get('http://localhost:8080/api/v1/fetchAllProducts')
       .then(response=>{
         const {data} = response;
         data.reverse(); // to show the latest products on top of the page
@@ -30,7 +30,7 @@ function Products({socket}) {
     })
     // fetches the data on socket broadcasted fetchData event
     socket.on('fetchData',(data)=>{
-      axios.get('https://auction-hub.onrender.com/api/v1/fetchAllProducts')
+      axios.get('http://localhost:8080/api/v1/fetchAllProducts')
       .then(response=>{
         const {data} = response;
         data.reverse(); // to show the latest products on top of the page

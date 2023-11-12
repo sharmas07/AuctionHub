@@ -28,7 +28,7 @@ function Register(props) {
     const { username, email, password } = newUser;
     e.preventDefault(); 
     await axios
-      .post("https://auction-hub.onrender.com/api/v1/signup", {
+      .post("http://localhost:8080/api/v1/signup", {
         username,
         email,
         password,
