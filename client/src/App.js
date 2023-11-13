@@ -14,10 +14,11 @@ import LandingPage from "./components/LandingPage";
 import UserProducts from "./components/UserProducts";
 import axios from "axios";
 import { io } from "socket.io-client";
-const socket = io("http://localhost:8080");
+import baseURL from "./baseURL";
+const socket = io(baseURL);
 
 function App() {
-  
+  console.log(baseURL)
   const [scrolledOver, setScrolledover]= useState(false)
 
   window.addEventListener("scroll", function () {
@@ -44,7 +45,7 @@ function App() {
   const getUser = async () => {
     if (localStorage.getItem("auth-token")) {
       await axios
-        .get("http://localhost:8080/api/v1/getuser", {
+        .get(`${baseURL}/api/v1/getuser`, {
           headers: {
             "auth-token": localStorage.getItem("auth-token"),
           },

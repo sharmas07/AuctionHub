@@ -5,6 +5,7 @@ import Spinner from "./Spinner";
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { useNavigate } from 'react-router-dom';
+import baseURL from '../baseURL';
 const UserProducts = (props) => {
     const navigate = useNavigate();
     const {socket} = props
@@ -34,7 +35,7 @@ const UserProducts = (props) => {
         }
           
       socket.on('fetchData',()=>{
-        axios.get('http://localhost:8080/api/v1/fetchAllUserProducts',{
+        axios.get(`${baseURL}/api/v1/fetchAllUserProducts`,{
           headers:{
               "auth-token": localStorage.getItem('auth-token')
           }

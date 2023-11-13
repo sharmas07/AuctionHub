@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Spinner from './Spinner'
 import Footer from './Footer'
 import i from '../images/ac.png'
+import baseURL from '../baseURL'
 
 
 function Login(props) {
@@ -19,7 +20,7 @@ function Login(props) {
     setloggedin(true)
     setisloading(true)
     e.preventDefault()
-    await axios.post(`http://localhost:8080/api/v1/login`,{
+    await axios.post(`${baseURL}/api/v1/login`,{
       email, password
     })
     .then(async function (response) {

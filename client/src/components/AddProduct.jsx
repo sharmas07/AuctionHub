@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Spinner from './Spinner'
 import Footer from "./Footer";
+import baseURL from "../baseURL";
 
 function AddProduct({socket}) {
   const [days, setDays] = useState('');
@@ -130,7 +131,7 @@ function AddProduct({socket}) {
       formData.append('userid', newProduct.userid)
       formData.append('image', image)
       if (localStorage.getItem('auth-token')) {
-          await axios.post('http://localhost:8080/api/v1/addproduct', formData, {
+          await axios.post(`${baseURL}/api/v1/addproduct`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
