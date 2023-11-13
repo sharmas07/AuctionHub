@@ -8,6 +8,9 @@
     position: relative;
     width: auto;
 }
+.main-container-padding{
+    padding-top: 90px;
+}
 .sidebar{
     transition-duration: 2s;
     display: none;
