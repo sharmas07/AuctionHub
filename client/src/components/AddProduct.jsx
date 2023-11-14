@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CSS/Register.css";
+import "./CSS/AddProduct.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Spinner from './Spinner'
@@ -194,33 +194,65 @@ function AddProduct({socket}) {
             type="file"
             className="input"
           />
-          {isLoading && <Spinner/>} 
+          
          {/* TODO: ADD TIME TO SOLD OUT */}
-         <label>
-        Days:
-        <input type="text" value={days} onChange={handleDaysChange} maxLength={'2'} />
+         <div className="time-input-container">
+      <label>
+        <p className="time-label">Days</p>
+        <input
+          type="text"
+          value={days}
+          onChange={handleDaysChange}
+          maxLength={'2'}
+          className="time-input"
+        />
       </label>
 
-      <label>
-        Hours:
-        <input type="text" value={hours} onChange={handleHoursChange} maxLength={'2'} />
-      </label>
+      <span className="separator">:</span>
 
       <label>
-        Minutes:
-        <input type="text" value={minutes} onChange={handleMinutesChange} maxLength={'2'} />
+      <p className="time-label">Hours</p>
+        <input
+          type="text"
+          value={hours}
+          onChange={handleHoursChange}
+          maxLength={'2'}
+          className="time-input"
+        />
       </label>
 
+      <span className="separator">:</span>
+
       <label>
-        Seconds:
-        <input type="text" value={seconds} onChange={handleSecondsChange} maxLength={'2'} />
+      <p className="time-label">Minutes</p>
+        <input
+          type="text"
+          value={minutes}
+          onChange={handleMinutesChange}
+          maxLength={'2'}
+          className="time-input"
+        />
       </label>
-        <button className="register-btn" onClick={handleAddProduct}>
+
+      <span className="separator">:</span>
+
+      <label>
+      <p className="time-label">Seconds</p>
+        <input
+          type="text"
+          value={seconds}
+          onChange={handleSecondsChange}
+          maxLength={'2'}
+          className="time-input"
+        />
+      </label>
+    </div>
+      {isLoading && <Spinner/>} 
+        <button className="add-product-btn" onClick={handleAddProduct}>
           Add Product
         </button>
       </form>
     </div>
-      <Footer />
     </>
   );
 }

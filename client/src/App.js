@@ -18,7 +18,6 @@ import baseURL from "./baseURL";
 const socket = io(baseURL);
 
 function App() {
-  console.log(baseURL)
   const [scrolledOver, setScrolledover]= useState(false)
 
   window.addEventListener("scroll", function () {

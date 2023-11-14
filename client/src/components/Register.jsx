@@ -110,7 +110,6 @@ function Register(props) {
           <input className="register-btn" type="submit" onClick={onRegister} />
         </form>
       </div>
-      <Footer />
     </>
   );
 }
