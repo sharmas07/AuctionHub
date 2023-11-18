@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
 import Footer from "./Footer";
 import baseURL from "../baseURL";
+
 import AutionOnline from "../images/Ao.png";
+
 
 function Register(props) {
   const {setUserLoggedin, getUser} = props
@@ -113,7 +115,9 @@ function Register(props) {
           <input className="register-btn" type="submit" onClick={onRegister} />
         </form>
       </div>
+
       </div>
+
     </>
   );
 }
