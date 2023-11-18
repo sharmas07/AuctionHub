@@ -1,0 +1,31 @@
+.add-product-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+.time-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.time-label {
+  margin-left: 4px;
+  margin-bottom: 4px;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.time-input {
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  width: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.separator {
+  margin-left: 4px;
+  margin-top: 10px;
+  margin-right: 5px;
+}

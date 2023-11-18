@@ -46,6 +46,17 @@
   color: black;
   transition: 0.1s;
 }
+.hero-image{
+  animation: continuousHoverUpDown 2s infinite;
+}
+@keyframes continuousHoverUpDown {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px); /* Adjust the vertical movement distance as needed */
+  }
+}
 @media (max-width: 768px) {
   .landingpage-text-content {
     font-size: 2.5rem;
@@ -65,7 +76,7 @@
   .landing-page-content {
     flex-direction: column;
   }
-  .a {
+  .hero-image {
     width: 400px;
   }
 }

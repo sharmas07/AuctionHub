@@ -2,14 +2,14 @@ import React from "react";
 import "./CSS/LandingPage.css";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import a from "../images/Auction.png";
+import heroImage from "../images/Auction.png";
 
 const LandingPage = () => {
   return (
     <div>
       <div className="landing-page">
         <div className="landing-page-content">
-        <img src={a} alt="" className="a"/>
+        <img src={heroImage} alt="" className="hero-image"/>
           <div className="landingpage-text-content">
             Revolutionize the Way You Bid and Sell with Our Auction Hub.
           </div>
@@ -24,7 +24,6 @@ const LandingPage = () => {
           </div> */}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

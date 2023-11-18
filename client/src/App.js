@@ -14,8 +14,26 @@ import LandingPage from "./components/LandingPage";
 import UserProducts from "./components/UserProducts";
 import axios from "axios";
 import { io } from "socket.io-client";
-const socket = io("https://auction-hub.onrender.com");
+import baseURL from "./baseURL";
+const socket = io(baseURL);
+
 function App() {
+  const [scrolledOver, setScrolledover]= useState(false)
+
+  window.addEventListener("scroll", function () {
+    console.log("scroll event git fired")
+    var container = document.querySelector(".main-container");
+    var scrollPosition = window.scrollY;
+    console.log(scrollPosition, " ", container.offsetHeight)
+    if (scrollPosition >= 100) {
+      console.log("inside if")
+      setScrolledover(true)
+    } else {
+      console.log("inside else")
+      setScrolledover(false)
+    }
+  });
+
   const [Username, setUsername] = useState("");
   const [UserLoggedin, setUserLoggedin] = useState(false);
   const [hamvar, setHamvar] = useState(false);
@@ -26,7 +44,7 @@ function App() {
   const getUser = async () => {
     if (localStorage.getItem("auth-token")) {
       await axios
-        .get("https://auction-hub.onrender.com/api/v1/getuser", {
+        .get(`${baseURL}/api/v1/getuser`, {
           headers: {
             "auth-token": localStorage.getItem("auth-token"),
           },
@@ -46,13 +64,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar
+          scrolledOver={scrolledOver}
           handleHamburger={handleHamburger}
           UserLoggedin={UserLoggedin}
           setUserLoggedin={setUserLoggedin}
           Username={Username}
           getUser={getUser}
         />
-        <section className="main-container">
+        <section className={`main-container`}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route

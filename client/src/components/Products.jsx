@@ -3,6 +3,7 @@ import axios from 'axios'
 import './CSS/products.css'
 import Spinner from "./Spinner";
 import ProductCard from './ProductCard';
+import baseURL from '../baseURL';
 
 function Products({socket}) {
   const [Products, setProducts] = useState([])
@@ -12,7 +13,7 @@ function Products({socket}) {
   useEffect(() => {
     setisloading(true);
     // fetches all the products of all users
-    axios.get('https://auction-hub.onrender.com/api/v1/fetchAllProducts')
+    axios.get(`${baseURL}/api/v1/fetchAllProducts`)
     .then(response=>{
       const {data} = response;
       data.reverse();
@@ -21,7 +22,7 @@ function Products({socket}) {
     })
     // refresh on fetching data from server's socket event
     socket.on('newProductAdded',(data)=>{
-      axios.get('https://auction-hub.onrender.com/api/v1/fetchAllProducts')
+      axios.get(`${baseURL}/api/v1/fetchAllProducts`)
       .then(response=>{
         const {data} = response;
         data.reverse(); // to show the latest products on top of the page
@@ -30,7 +31,7 @@ function Products({socket}) {
     })
     // fetches the data on socket broadcasted fetchData event
     socket.on('fetchData',(data)=>{
-      axios.get('https://auction-hub.onrender.com/api/v1/fetchAllProducts')
+      axios.get(`${baseURL}/api/v1/fetchAllProducts`)
       .then(response=>{
         const {data} = response;
         data.reverse(); // to show the latest products on top of the page

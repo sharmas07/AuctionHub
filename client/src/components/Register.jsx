@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
 import Footer from "./Footer";
+import baseURL from "../baseURL";
+import AutionOnline from "../images/Ao.png";
 
 function Register(props) {
   const {setUserLoggedin, getUser} = props
@@ -28,7 +30,7 @@ function Register(props) {
     const { username, email, password } = newUser;
     e.preventDefault(); 
     await axios
-      .post("https://auction-hub.onrender.com/api/v1/signup", {
+      .post(`${baseURL}/api/v1/signup`, {
         username,
         email,
         password,
@@ -59,6 +61,8 @@ function Register(props) {
   };
   return (
     <>
+    <div className="singup">
+      <img src={AutionOnline}  className="ao"alt="" />
       <div className="container">
         <form className="form">
           <span className="title">Sign Up</span>
@@ -109,7 +113,7 @@ function Register(props) {
           <input className="register-btn" type="submit" onClick={onRegister} />
         </form>
       </div>
-      <Footer />
+      </div>
     </>
   );
 }

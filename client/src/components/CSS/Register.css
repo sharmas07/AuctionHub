@@ -10,7 +10,7 @@
     flex-direction: column;
     gap: 2rem;
     width: 300px;
-    background-color: #fff;
+    background-color: #f1f1f1;
     border-radius: 20px;
     padding: 40px 40px;
     box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.03)
@@ -24,11 +24,11 @@
     margin-bottom: 4px;
   }
 
-  .input, button {
+  .input {
     border: none;
     outline: none;
-    width: 100%;
-    padding: 16px 10px;
+    width: 90%;
+    padding: 16px 13px;
     background-color: rgb(247, 243, 243);
     border-radius: 10px;
     box-shadow: 12.5px 12.5px 10px rgba(0, 0, 0, 0.015),100px 100px 80px rgba(0, 0, 0, 0.03);
@@ -40,7 +40,7 @@
   padding: 0.7rem;
   border: none;
   text-align: center;
-  border-radius: 1rem;
+  border-radius: 10px;
   font-size: 1rem;
   background-color: black;
   color: #ffffff;
@@ -49,4 +49,20 @@
   .container{
     height: 75vh;
   }
+  .singup{
+   flex-direction: column; 
+  }
+  .ao{
+    display: none;
+  }
+}
+
+.singup{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
+.ao{
+  width: 500px;
 }
