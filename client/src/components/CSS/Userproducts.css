@@ -1,9 +1,11 @@
 .products-container{
+    margin: auto;
+    width: 75%;
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    height: 100vh;
-    flex-direction: column;
+    flex-direction: row;
 }
 .add-product-btn-container{
     cursor: pointer;

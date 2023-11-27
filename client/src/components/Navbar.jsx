@@ -22,6 +22,7 @@ function Navbar(props) { // handles logout: clears auth-token from localStorage 
   
   return (
     <div className={`nav-container ${scrolledOver?'nav-fixed':''}`}>
+
       <div className="logo-container">
         <Link to={'/'}><img src={logo} alt="logo" className="logo" /></Link>
       </div>

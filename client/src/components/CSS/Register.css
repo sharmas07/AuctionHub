@@ -1,5 +1,4 @@
 .container{
-  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 100vh;
+  height: 89vh;
 }
 .ao{
   width: 500px;

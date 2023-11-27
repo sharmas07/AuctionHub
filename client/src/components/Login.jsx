@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "../components/CSS/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
-import Footer from "./Footer";
 import i from "../images/ac.png";
 import baseURL from "../baseURL";
 
@@ -46,7 +45,7 @@ function Login(props) {
     <>
       {" "}
       <div className="auth">
-        <img src={i} className="c" alt="" />
+        <img src={i} className="loginPage-image" alt="" />
         <div className="container">
           <form className="form">
             <p className="form-title">Sign in to your account</p>

@@ -32,7 +32,7 @@
   height: 42px;
   border-radius: 0.4rem;
   font-weight: 600;
-  padding: 16px;
+  padding: 10px 16px 10px 16px;
   border: none;
   box-shadow: 0 0.5rem 1rem rgba(143, 142, 142, 0.15) !important;
   background: rgba(0, 0, 0, 0.1);
