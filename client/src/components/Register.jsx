@@ -7,6 +7,9 @@ import Spinner from "./Spinner";
 import Footer from "./Footer";
 import baseURL from "../baseURL";
 
+import AutionOnline from "../images/Ao.png";
+
+
 function Register(props) {
   const {setUserLoggedin, getUser} = props
   const [validDetails, setvalidDetails] = useState(false);
@@ -60,6 +63,8 @@ function Register(props) {
   };
   return (
     <>
+    <div className="singup">
+      <img src={AutionOnline}  className="ao"alt="" />
       <div className="container">
         <form className="form">
           <span className="title">Sign Up</span>
@@ -110,6 +115,9 @@ function Register(props) {
           <input className="register-btn" type="submit" onClick={onRegister} />
         </form>
       </div>
+
+      </div>
+
     </>
   );
 }

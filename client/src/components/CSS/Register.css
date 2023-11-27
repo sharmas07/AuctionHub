@@ -49,4 +49,20 @@
   .container{
     height: 75vh;
   }
+  .singup{
+   flex-direction: column; 
+  }
+  .ao{
+    display: none;
+  }
+}
+
+.singup{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
+.ao{
+  width: 500px;
 }
