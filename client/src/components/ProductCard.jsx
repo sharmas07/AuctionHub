@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CSS/ProductCard.css";
 import { useNavigate } from "react-router-dom";
 import imageNotAvailable from "./Images/Image_not_available1.png";
+import soldout from "../assets/soldout.mp3"
 function ProductCard(props) {
   const navigate = useNavigate();
   let {
@@ -76,8 +77,14 @@ function ProductCard(props) {
           if (last_bidder === "none") {
             setRemainingTime("Time Up No one bought");
             setTimerTextColor("red")
+            const soldOutAudio = new Audio(soldout)
+            soldOutAudio.play();
+            console.log("at audio")
           } 
           else {
+            const soldOutAudio = new Audio(soldout)
+            soldOutAudio.play();
+            console.log("at audio")
             setRemainingTime(`Time Up Sold out to ${last_bidder}`);
             setTimerTextColor("red")
           }

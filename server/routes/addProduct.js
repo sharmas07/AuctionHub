@@ -40,8 +40,9 @@ async (req, res)=>{
             last_bidder,
             bid_time,
             added_time,
-            image_url: req.file.path
+            image_url: `${req.file?.path?req.file.path:''}`
         })
+        console.log(newProduct);
         res.status(201).json(newProduct)
         
     } catch (error) {
