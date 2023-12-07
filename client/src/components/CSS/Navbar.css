@@ -5,10 +5,8 @@
   align-items: center;
   background-color: #f5f5f5;
   color: black;
-  transition: 0.9s;
 }
 .nav-fixed{
-  transition: 0.9s;
   position: fixed;
     top: 0px;
     left: 0px;

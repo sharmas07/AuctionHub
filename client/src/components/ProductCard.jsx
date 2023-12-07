@@ -28,9 +28,6 @@ function ProductCard(props) {
     // Set the date we're counting down to
     let countDownDate = new Date(added_time);
 
-    // Extra time string in the format "01:01:20:30"
-    let extraTime = bid_time;
-
     // Split the extra time string into its components
     if (bid_time) {
       let [days, hours, minutes, seconds] = bid_time.split(":");
@@ -68,14 +65,14 @@ function ProductCard(props) {
           setTimerTextColor("orange")
         }
         // Set the remaining time in the state
-        setRemainingTime(`Time Left: ${remainingTimeString}`);
+        setRemainingTime(`${remainingTimeString} left`);
 
         // If the count down is over, clear the interval
         if (distance < 0) {
           setDisableBidBtn(true)
           clearInterval(x);
           if (last_bidder === "none") {
-            setRemainingTime("Time Up No one bought");
+            setRemainingTime("Time Up");
             setTimerTextColor("red")
             const soldOutAudio = new Audio(soldout)
             soldOutAudio.play();
@@ -85,7 +82,7 @@ function ProductCard(props) {
             const soldOutAudio = new Audio(soldout)
             soldOutAudio.play();
             console.log("at audio")
-            setRemainingTime(`Time Up Sold out to ${last_bidder}`);
+            setRemainingTime(`Sold out`);
             setTimerTextColor("red")
           }
         }
@@ -99,35 +96,34 @@ function ProductCard(props) {
   }, []);
 
   return (
-    <div className="product-card">
-      <div className="product-card-left">
-        <div className="product-image-container">
-          <img
-            className="product-img"
-            src={image_url ? image_url : imageNotAvailable}
-            alt=""
-          />
+    <>
+
+    <div className="product__card__container">
+      <div className="inner-container">
+        <img
+          width="300px"
+          height="210"
+          className="product-card-image"
+          src={image_url ? image_url : imageNotAvailable}
+          alt=""
+        />
+        <div className="product-details-container">
+          <h3>Product Name: {product_name}</h3>
+          <p>seller: {creator}</p>
+          <h4>started with: {initial_price}</h4>
+          <div className="timer-container">
+            <h4>last bidder: {last_bidder}</h4>
+            <span className="timer-text" style={{color:`${TimerTextColor}`}}>{remainingTime}</span>
+          </div>
         </div>
-        <div className="product-details">
-          <span className="product-detail">Product Name: {product_name}</span>
-          <span className="product-detail">Bid Creator: {creator}</span>
-          <span className="product-detail">
-            Bid Started With: {initial_price}
-          </span>
-          <span style={{color:`${TimerTextColor}`}} className="product-detail">{remainingTime}</span>
-        </div>
-      </div>
-      <div className="product-card-right">
-        <div className="product-right-content">
-          <span className="current-price">Current Price: {current_price}</span>
-          <span className="current-price">Last Bidder: {last_bidder} </span>
-          <button className="bid-btn" disabled={disableBidBtn} onClick={handleBidBtn}>
-            {" "}
-            <span>MAKE YOUR BID</span>
-          </button>
+        <div className="product-price-bidbtn-container">
+          <h4>current price: {current_price}</h4>
+          <button className="bidding-btn" disabled={disableBidBtn} onClick={handleBidBtn}>Bid</button>
         </div>
       </div>
     </div>
+
+    </>
   );
 }
 
