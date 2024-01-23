@@ -4,6 +4,7 @@ import './CSS/Userproducts.css'
 import Spinner from "./Spinner";
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
+import BidHistoryModal from './BidHistoryModal';
 import { useNavigate } from 'react-router-dom';
 import baseURL from '../baseURL';
 const UserProducts = (props) => {
@@ -15,7 +16,7 @@ const UserProducts = (props) => {
         setisloading(true);
         // fetch user specific products using auth token
         if(localStorage.getItem('auth-token')){
-          axios.get('http://localhost:8080/api/v1/fetchAllUserProducts',{
+          axios.get(`${baseURL}/api/v1/fetchAllUserProducts`,{
           headers:{
               "auth-token": localStorage.getItem('auth-token')
           }
@@ -51,17 +52,39 @@ const UserProducts = (props) => {
       // eslint-disable-next-line
       },[socket])
         
+        // stuff related to bid History
+  const [productHistoryId, setProductHistoryId] = useState(null)
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [productBidHistory, setProductBidHistory] = useState([]);
+  const [isHistoryLoading, setIsHistoryLoading] = useState(true);
+
+  useEffect(() => {
+    setProductBidHistory([]);
+    setIsHistoryLoading(true);
+    const getProductHistoryById = async ()=>{
+      const {data} = await axios.get(`${baseURL}/api/v1/bidHistory/get/${productHistoryId}`);
+      console.log("at line 67 in product comp");
+      console.log(data.History);
+      setIsHistoryLoading(false)
+      setProductBidHistory(data.History)
+    }
+    if(productHistoryId){
+      getProductHistoryById(productHistoryId)
+    }
+  }, [productHistoryId])
+
     return (
       <>
       <div className="products-container">
+      <BidHistoryModal Products={Products} isHistoryLoading={isHistoryLoading} productBidHistory={productBidHistory} setIsDialogOpen={setIsDialogOpen} isDialogOpen={isDialogOpen} productHistoryId={productHistoryId}  />
         {isloading && <Spinner />}
          {Products && Products.map((product)=>{
-        return <ProductCard key={product._id} product={product}/>
+        return <ProductCard setProductHistoryId={setProductHistoryId} key={product._id} product={product} isDialogOpen={isDialogOpen} setIsDialogOpen={setIsDialogOpen}/>
         })}
         <div className='add-product-btn-container'>
           <Link to={'/addproduct'}>
           <button className='add-product-btn'><span>
-          <p  style={{fontSize:'20px'}}>Add Product <span>+</span></p>
+          <p style={{fontSize:'20px'}}>Add Product <span>+</span></p>
             
           </span>
           </button>

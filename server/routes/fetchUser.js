@@ -12,6 +12,7 @@ router.get('/',fetchuser,async (req, res)=>{
       
     } catch (error) {
         console.log(error);
+        console.log("line no 15 in fetchUser.js");
         res.status(404).send(error)
     }
 }) 

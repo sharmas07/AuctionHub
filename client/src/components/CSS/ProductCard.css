@@ -21,6 +21,12 @@
     }
 }
 
+.bid-history{
+    color: gray;
+    text-decoration: underline;
+    cursor: pointer;
+    width: max-content;
+}
 
 /* new card style */
 .product__card__container{
@@ -32,8 +38,8 @@
     border: 1px solid gray;
 }
 .product-card-image{
-    max-width: 300px;
-    width: 300px;
+    /* max-width: 280px; */
+    width: 280;
     object-fit: fill;
     max-height: 300px;
 }
@@ -65,10 +71,15 @@
     justify-content: space-evenly;
     height: 150px;
 }
-.product-price-bidbtn-container > button{
+.bidding-btn{
+    width: 4rem;
     background-color: black;
     color: white;
     padding: 8px 16px 8px 16px;
     outline: none;
     border: none;
+}
+.bidding-btn:hover{
+    cursor: pointer;
+    
 }

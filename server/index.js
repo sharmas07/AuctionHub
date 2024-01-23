@@ -15,6 +15,7 @@ import addProduct from './routes/addProduct.js'
 import fetchUser from './routes/fetchUser.js';
 import fetchAllUserProducts from './routes/fetchAllUserProducts.js';
 import fetchAllProducts from './routes/fetchAllProducts.js'
+import bidHistoryRoute from './routes/bidHistoryRoute.js'
 
 const app = express();
 app.use(cors());
@@ -75,6 +76,7 @@ app.use('/api/v1/getuser', fetchUser)
 app.use('/api/v1/addproduct', addProduct)
 app.use('/api/v1/fetchAllUserProducts', fetchAllUserProducts)
 app.use('/api/v1/fetchAllProducts', fetchAllProducts)
+app.use('/api/v1/bidHistory', bidHistoryRoute)
 
 app.get('/', async(req,res)=>{
     res.status(201).send('hello from auction hub')

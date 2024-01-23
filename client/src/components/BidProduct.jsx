@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import baseURL from '../baseURL';
+import axios from 'axios';
 
 function BidProduct({socket}) {
   const navigate = useNavigate()
@@ -9,7 +11,7 @@ function BidProduct({socket}) {
   const [error,setError] = useState(false)
 
   //  handles onsubmit and emits an bid product event
-  const handleOnsubmit = (e)=>{
+  const handleOnsubmit = async (e)=>{
     e.preventDefault();
     // con bid only if any user loggedin, i.e login required
     if(localStorage.getItem('auth-token')){
@@ -19,6 +21,14 @@ function BidProduct({socket}) {
           last_bidder: localStorage.getItem('username'),
           _id,
         });
+        // save history after succesful bid
+        const newBidHistory = {
+          Bidder: localStorage.getItem('username'),
+          Amount: biddedPrice,
+          timestamp: new Date()
+        }
+        const bidHistory = await axios.post(`${baseURL}/api/v1/bidHistory/post/${_id}`, newBidHistory);
+        console.log(bidHistory);
         // send user to explore page after a succesful bid
         navigate('/explore'); 
       } else {

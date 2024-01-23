@@ -1,7 +1,5 @@
 import React from "react";
 import "./CSS/LandingPage.css";
-import { Link } from "react-router-dom";
-import Footer from "./Footer";
 import heroImage from "../images/Auction.png";
 
 const LandingPage = () => {

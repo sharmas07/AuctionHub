@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import imageNotAvailable from "./Images/Image_not_available1.png";
 import soldout from "../assets/soldout.mp3"
 function ProductCard(props) {
+  let {setProductHistoryId, setIsDialogOpen, isDialogOpen} = props;
   const navigate = useNavigate();
   let {
     _id,
@@ -24,10 +25,10 @@ function ProductCard(props) {
   const [remainingTime, setRemainingTime] = useState("");
   const [TimerTextColor, setTimerTextColor] = useState("green")
 
-  useEffect(() => {
+  useEffect(() => { 
     // Set the date we're counting down to
     let countDownDate = new Date(added_time);
-
+  
     // Split the extra time string into its components
     if (bid_time) {
       let [days, hours, minutes, seconds] = bid_time.split(":");
@@ -74,15 +75,9 @@ function ProductCard(props) {
           if (last_bidder === "none") {
             setRemainingTime("Time Up");
             setTimerTextColor("red")
-            const soldOutAudio = new Audio(soldout)
-            soldOutAudio.play();
-            console.log("at audio")
+            
           } 
           else {
-            const soldOutAudio = new Audio(soldout)
-            soldOutAudio.play();
-            console.log("at audio")
-            setRemainingTime(`Sold out`);
             setTimerTextColor("red")
           }
         }
@@ -95,12 +90,22 @@ function ProductCard(props) {
     }
   }, []);
 
+  const handleBidHistoryClick = async ()=>{
+    console.log("bid history btn clicked!")
+    const modal = document.querySelector(".bidHistoryModal");
+    console.log(modal);
+    modal.style.left = "10px";
+    console.log(" handleBidHistoryClick got fired");
+    setProductHistoryId(_id);
+    setIsDialogOpen(!isDialogOpen);
+  }
   return (
     <>
 
     <div className="product__card__container">
       <div className="inner-container">
-        <img
+
+	  <img
           width="300px"
           height="210"
           className="product-card-image"
@@ -115,6 +120,7 @@ function ProductCard(props) {
             <h4>last bidder: {last_bidder}</h4>
             <span className="timer-text" style={{color:`${TimerTextColor}`}}>{remainingTime}</span>
           </div>
+          <h6 onClick={()=>handleBidHistoryClick()} className="bid-history">bid History</h6>
         </div>
         <div className="product-price-bidbtn-container">
           <h4>current price: {current_price}</h4>
