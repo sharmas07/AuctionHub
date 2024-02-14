@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_SERVER_URL=http://server:8080
+    depends_on:
+      - server
+    networks:
+      - my-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGODB_URL=mongodb://mongo:27017/auction-hub
+    networks:
+      - my-network
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
+volumes:
+  mongodb-data:
