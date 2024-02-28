@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
 import baseURL from "../baseURL";
 
-import AutionOnline from "../images/Ao.png";
+import AutionOnline from "../assets/images/Auction.png";
 
 
 function Register(props) {

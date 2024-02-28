@@ -64,6 +64,6 @@
       flex-direction: column;
     }
     .loginPage-image{
-      width: 250px;
+      display: none;
     }
   }

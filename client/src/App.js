@@ -1,5 +1,4 @@
 import "./App.css";
-
 import close from "../src/components/Images/close.png";
 import userpic from "../src/components/Images/userp.png";
 import ProductCard from "./components/ProductCard";
@@ -10,10 +9,9 @@ import BidProduct from "./components/BidProduct";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Products from "./components/Products";
-import {useEffect, useState } from "react";
+import { useState } from "react";
 import LandingPage from "./components/LandingPage";
 import UserProducts from "./components/UserProducts";
-import BidHistoryModal from "./components/BidHistoryModal";
 import axios from "axios";
 import { io } from "socket.io-client";
 import baseURL from "./baseURL";
@@ -23,15 +21,10 @@ function App() {
   const [scrolledOver, setScrolledover]= useState(false)
 
   window.addEventListener("scroll", function () {
-    // console.log("scroll event git fired")
-    var container = document.querySelector(".main-container");
     var scrollPosition = window.scrollY;
-    // console.log(scrollPosition, " ", container.offsetHeight)
     if (scrollPosition >= 100) {
-      // console.log("inside if")
       setScrolledover(true)
     } else {
-      // console.log("inside else")
       setScrolledover(false)
     }
   });

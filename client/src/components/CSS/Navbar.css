@@ -6,11 +6,11 @@
   background-color: #f5f5f5;
   color: black;
 }
-.nav-fixed{
+.nav-fixed {
   position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 100;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
 }
 .logo {
   padding: 0.5rem;
@@ -69,19 +69,19 @@
   color: red;
   cursor: pointer;
 }
-.logout-btn{
-    font-size: 14px;
-    font-weight: 500;
-    border: 1px solid;
-    border-radius: 0.5rem;
-    padding: 0.3rem 0.5rem;
-    color: red;
-    cursor: pointer;
-    transition: 0.3s;
+.logout-btn {
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  color: red;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.logout-btn:hover{
-   color: white;
-   background-color: #DC143C;
+.logout-btn:hover {
+  color: white;
+  background-color: #dc143c;
 }
 
 @media (max-width: 768px) {

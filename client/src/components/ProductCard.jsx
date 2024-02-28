@@ -114,16 +114,16 @@ function ProductCard(props) {
         />
         <div className="product-details-container">
           <h3>Product Name: {product_name}</h3>
-          <p>seller: {creator}</p>
-          <h4>started with: {initial_price}</h4>
+          <p>Seller: {creator}</p>
+          <h4>Started with: {initial_price}</h4>
           <div className="timer-container">
-            <h4>last bidder: {last_bidder}</h4>
+            <h4>Last bidder: {last_bidder}</h4>
             <span className="timer-text" style={{color:`${TimerTextColor}`}}>{remainingTime}</span>
           </div>
           <h6 onClick={()=>handleBidHistoryClick()} className="bid-history">bid History</h6>
         </div>
         <div className="product-price-bidbtn-container">
-          <h4>current price: {current_price}</h4>
+          <h4>Current price: {current_price}</h4>
           <button className="bidding-btn" disabled={disableBidBtn} onClick={handleBidBtn}>Bid</button>
         </div>
       </div>
