@@ -9,7 +9,6 @@ Auction Hub is an online platform that simplifies the auction process for both b
 
 ![App Screenshot](https://user-images.githubusercontent.com/82169761/230784814-9cfa5b7b-a339-47f2-b09b-d256dc255fa9.png)
 
-![App Screenshot](https://user-images.githubusercontent.com/82169761/230790825-1163f6b1-4f98-4926-9577-f1299e2686eb.png)
 
 
 ## Run Locally
