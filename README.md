@@ -7,7 +7,8 @@ Auction Hub is an online platform that simplifies the auction process for both b
 
 ## Screenshots
 
-![App Screenshot](https://user-images.githubusercontent.com/82169761/230784814-9cfa5b7b-a339-47f2-b09b-d256dc255fa9.png)
+![image](https://github.com/sharmas07/AuctionHub/assets/82169761/c1d6827f-ff4d-4790-8c7a-9739028c9644)
+
 
 
 
