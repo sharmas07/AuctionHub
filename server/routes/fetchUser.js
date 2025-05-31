@@ -1,6 +1,5 @@
 import express from "express";
 import fetchuser from "../middleware/fetchuser.js";
-import User from "../mongodb/models/user.js";
 
 const router = express.Router();
 

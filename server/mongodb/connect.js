@@ -1,10 +1,14 @@
-import mongoose from "mongoose";
+import prisma from '../prisma/client.js';
 
-const connectDB = (uri)=>{
-    mongoose.set('strictQuery', true);
-    mongoose.connect(uri)
-        .then(()=>{ console.log('connected to MongoDB');})
-        .catch((err)=>{ console.log(err);})
-}
+const connectDB = async () => {
+  try {
+    await prisma.$connect();
+    console.log('Connected to PostgreSQL database');
+    return prisma;
+  } catch (error) {
+    console.error('Failed to connect to database:', error);
+    process.exit(1);
+  }
+};
 
 export default connectDB;

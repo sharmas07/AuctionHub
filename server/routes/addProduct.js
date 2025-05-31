@@ -1,12 +1,12 @@
 import express from "express";
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 import { v2 as cloudinary } from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import multer from "multer";
+import prisma from '../prisma/client.js';
 
 dotenv.config();
 
-import Product from "../mongodb/models/product.js";
 const router = express.Router();
 
 cloudinary.config({
@@ -25,29 +25,34 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 router.post('/',
- upload.single('image') ,
-async (req, res)=>{
-    
+ upload.single('image'),
+async (req, res) => {
     try { 
-        const {added_time,bid_time,product_name, initial_price, current_price, last_bidder, userid, creator} = req.body
-        // creates a new product in db
-        const newProduct = await Product.create({
-            userid,
-            product_name,
-            creator,
-            initial_price,
-            current_price,
-            last_bidder,
-            bid_time,
-            added_time,
-            image_url: `${req.file?.path?req.file.path:''}`
-        })
-        console.log(newProduct);
-        res.status(201).json(newProduct)
+        const {added_time, bid_time, product_name, initial_price, current_price, last_bidder, userid, creator} = req.body
         
+        const newProduct = await prisma.product.create({
+            data: {
+                userId: userid,
+                productName: product_name,
+                creator,
+                initialPrice: initial_price,
+                currentPrice: current_price,
+                lastBidder: last_bidder,
+                bidTime: bid_time,
+                addedTime: added_time,
+                imageUrl: req.file?.path || '',
+                user: {
+                    connect: { id: userid }
+                }
+            }
+        });
+        
+        console.log(newProduct);
+        res.status(201).json(newProduct);
     } catch (error) {
         console.log(error);
+        res.status(500).json({ success: false, message: 'Server error' });
     }
-})
+});
 
 export default router;

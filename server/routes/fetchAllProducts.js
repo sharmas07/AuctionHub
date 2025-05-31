@@ -1,16 +1,16 @@
 import express from "express";
-import Product from "../mongodb/models/product.js";
+import prisma from '../prisma/client.js';
 const router = express.Router();
 
 // endpoint for explore page
-router.get('/',async (req, res)=>{
+router.get('/', async (req, res) => {
     try {
-        const AllProducts = await Product.find()
-        res.status(201).json(AllProducts)
-        
+        const allProducts = await prisma.product.findMany();
+        res.status(201).json(allProducts);
     } catch (error) {
         console.log(error);
+        res.status(500).json({ success: false, message: 'Server error' });
     }
-})
+});
 
 export default router;

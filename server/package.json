@@ -6,12 +6,16 @@
   "main": "index.js",
   "scripts": {
     "devstart": "nodemon index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "node scripts/migrateData.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^6.8.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cloudinary": "^1.36.1",
@@ -24,6 +28,7 @@
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^2.0.22",
+    "prisma": "^6.8.2",
     "socket.io": "^4.6.1"
   }
 }
